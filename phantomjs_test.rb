@@ -27,6 +27,7 @@ url2 = 'http://its.taipei.gov.tw/m/aspx/park/parkF.aspx?lang=Cht%C2%AEion=%E5%A3
 class Crawler
 	include Capybara::DSL
 	def carwler(url)
+		start_time = Time.now
 		visit(url)
 		doc = Nokogiri::HTML.parse(page.html)
 		visit(url)
@@ -43,6 +44,8 @@ class Crawler
 		else
 			puts "網路不穩，請再試一次"
 		end
+		end_time = Time.now
+  	puts end_time - start_time
 	end
 end
 
